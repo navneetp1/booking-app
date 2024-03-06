@@ -17,7 +17,7 @@ export type HotelType = {
     lastUpdated: Date;
 };
 
-const hotelSchema = new mongoose.Schema({
+const hotelSchema = new mongoose.Schema<HotelType>({
     userId: { type: String, required: true},
     name: {type: String, required: true},
     city: {type: String, required: true},
