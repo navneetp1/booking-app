@@ -36,7 +36,7 @@ router.post("/login", [
 
             //creating an access token and making it an http cookie
             const token = jwt.sign(
-                { userId: user },
+                { userId: user.id },
                 process.env.JWT_SECRET_KEY as string, {
                     expiresIn: "1d"
             });
@@ -45,7 +45,7 @@ router.post("/login", [
                 httpOnly: true,
                 secure: process.env.NODE_ENV === "production",
                 maxAge: 86400000,
-                sameSite: "lax"
+             
             });
 
             res.status(200).json({userId: user._id});
@@ -53,7 +53,7 @@ router.post("/login", [
 
         }catch(error){
             console.log(error);
-            res.status(400).json({message: "Something went wrong!"});
+            res.status(500).json({message: "Something went wrong!"});
         }
     });
 

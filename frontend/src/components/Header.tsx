@@ -12,17 +12,20 @@ const Header = () => {
                     <Link to='/'>chillHolidays.com</Link>
                 </span>
                 <span className="flex space-x-2">
-                    {isLoggedIn ? <>
+                    {isLoggedIn ? (<>
                         
-                        <Link className='flex item-center text-black px-3 py-1 font-bold bg-yellow-200 hover:bg-yellow-600' to='/my-bookings'>My Bookings</Link>
-                        <Link className='flex item-center text-black px-3 py-1 font-bold bg-yellow-200 hover:bg-yellow-600' to='/my-hotels'>My Hotels</Link>
+                        <Link className='flex item-center text-black px-3 py-1 font-bold bg-yellow-200 hover:bg-yellow-400' 
+                              to='/my-bookings'>My Bookings</Link>
+                        <Link className='flex item-center text-black px-3 py-1 font-bold bg-yellow-200 hover:bg-yellow-400' 
+                              to='/my-hotels'>My Hotels</Link>
                         <SignOutButton/>
                     </>
-                    :   <Link to='/sign-in' 
+                    ):(  
+                     <Link to='/sign-in' 
                           className='flex bg-white items-center text-blue-600 px-3 font-bold hover:bg-gray-100 '>
                         Sign In
                     </Link>
-                    }
+                    )}
                   
                 </span>
             </div>

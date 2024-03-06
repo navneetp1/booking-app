@@ -16,7 +16,7 @@ type AppContext = {
 //created a context
 const AppContext = React.createContext<AppContext | undefined>(undefined);
 
-export const AppContextProvider = ({ children }: { children: React.ReactNode; }) => {
+export const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
 
@@ -31,11 +31,11 @@ export const AppContextProvider = ({ children }: { children: React.ReactNode; })
             },
             isLoggedIn: !isError
         }}>
-            {toast && <Toast 
+            {toast && (<Toast 
                     message={toast.message} 
                     type={toast.type} 
                     onClose={() => setToast(undefined)}/>
-            }
+            )}
             {children}
         </AppContext.Provider>
     );
