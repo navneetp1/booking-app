@@ -27,7 +27,7 @@ export default function SignOutButton(){
         <>
             <button 
                 onClick={handleClick}
-                className="flex item-center text-blue-600 px-3 py-1 font-bold bg-white hover:bg-gray-200">
+                className="flex item-center rounded-xl text-blue-600 px-3 py-1 font-bold bg-white hover:bg-gray-200">
                 Sign Out
             </button>
         </>
