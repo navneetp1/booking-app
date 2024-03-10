@@ -55,14 +55,36 @@ test("should allow user to add hotel", async({ page }) => {
 test("should display hotels", async( { page } ) => {
     await page.goto(`${UI_URL}/my-hotels`);
 
-    await expect(page.getByText("Test Hotel")).toBeVisible();
-    await expect(page.getByText("Lorem Ipsum is")).toBeVisible();
-    await expect(page.getByText("Test City, Test Country")).toBeVisible();
-    await expect(page.getByText("Budget")).toBeVisible();
-    await expect(page.getByText("Rs.100 per night")).toBeVisible();
-    await expect(page.getByText("2 adults, 4 children")).toBeVisible();
-    await expect(page.getByText("5 STARS")).toBeVisible(); 
+    await expect(page.getByText("Test Hotel").first()).toBeVisible();
+    await expect(page.getByText("Lorem Ipsum is").first()).toBeVisible();
+    await expect(page.getByText("Test City, Test Country").first()).toBeVisible();
+    await expect(page.getByText("Budget").first()).toBeVisible();
+    await expect(page.getByText("Rs.100 per night").first()).toBeVisible();
+    await expect(page.getByText("2 adults, 4 children").first()).toBeVisible();
+    await expect(page.getByText("5 STARS").first()).toBeVisible(); 
 
-    await expect(page.getByRole("link", {name: "View Details"})).toBeVisible();
-    await expect(page.getByRole("link", {name: "Add Hotel"})).toBeVisible();
+    await expect(page.getByRole("link", {name: "View Details"}).first()).toBeVisible();
+    await expect(page.getByRole("link", {name: "Add Hotel"}).first()).toBeVisible();
+});
+
+test("should edit hotel", async( { page }) => {
+    await page.goto(`${UI_URL}/my-hotels`);
+
+    await page.getByRole("link", { name: "View Details"}).first().click();
+
+    await page.waitForSelector('[name="name"]', { state: "attached"})
+    await expect(page.locator('[name="name"]')).toHaveValue('Test Hotel');
+    await page.locator('[name="name"]').fill("Test Hotel Updated");
+
+    await page.getByRole("button", { name: "Save"}).click();
+    await page.waitForTimeout(5000);
+    await expect(page.getByText("Changes were saved")).toBeVisible();
+
+    // these 3 steps below ensure that the updated changes were reverted back to the iniital value
+    //done to keep the test true not just once...
+    await page.reload();
+    
+    await expect(page.locator('[name="name"]')).toHaveValue("Test Hotel Updated");
+    await page.locator('[name="name"]').fill("Test Hotel");
+    await page.getByRole("button", { name: "Save"}).click();
 })
