@@ -8,7 +8,7 @@ export default function Detail(){
     const { hotelId } = useParams();
 
     const { data: hotel} = useQuery("fetchHotelById", () => 
-    apiClient.fetchHotelById(hotelId as string), {
+    apiClient.fetchHotelById(hotelId || ""), {
         enabled: !!hotelId,  //truthy values are accepted(!!), works only when hotelId really exists
 
     });
@@ -52,7 +52,7 @@ export default function Detail(){
                 <div className="whitespace-pre-line">{hotel.description}</div>
 
                 <div className="h-fit">
-                    <GuestInfoForm pricePerNight={hotel.pricePerNight} hotelId={hotelId}/>
+                    <GuestInfoForm pricePerNight={hotel.pricePerNight} hotelId={hotel._id}/>
                 </div>
             </div>
         </div>
