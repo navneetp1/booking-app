@@ -30,3 +30,14 @@ test("should display hotel search results", async({ page }) => {
     await expect(page.getByText("Hotels found in Morocco")).toBeVisible();
     await expect(page.getByText("Morocco Plebians")).toBeVisible();
 })
+
+test("should show hotel details page", async ({ page })=> {
+    await page.goto(UI_URL);
+
+    await page.getByPlaceholder("Where you going?").fill("Morocco");
+    await page.locator('.search-icon').click();
+
+    await page.getByText("Morocco Plebians").click();
+    await expect(page).toHaveURL(/detail/);
+    await expect(page.getByRole("button", { name: "Book Now"})).toBeVisible();
+})

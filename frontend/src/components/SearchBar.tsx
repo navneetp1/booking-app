@@ -44,7 +44,7 @@ export default function SearchBar(){
                 />
             </div>
 
-            <div className="flex rounded-md bg-orange-100 px-2 py-1 gap-2" style={{width: "250px"}}>
+            <div className="flex rounded bg-orange-100 px-2 py-1 gap-2">
                 <label className="flex items-center">
                     Adults:
                     <input className="bg-orange-100 w-full p-1 focus:outline-none font-bold"  
@@ -68,7 +68,7 @@ export default function SearchBar(){
                 </label>
             </div>
 
-            <div className="ml-8">
+            <div>
                 <DatePicker 
                     selected={checkIn} 
                     onChange={(date) => setCheckIn(date as Date)}
@@ -78,13 +78,13 @@ export default function SearchBar(){
                     minDate={minDate}
                     maxDate={maxDate}
                     placeholderText="Check-in Date"
-                    className="min-w-full rounded-md bg-orange-100 p-2 focus:outline-none"
+                    className="min-w-full rounded bg-orange-100 p-2 focus:outline-none"
                     dateFormat="dd/MM/yyyy"
                     wrapperClassName="min-w-full"
                 />
             </div>
 
-            <div className="ml-8">
+            <div>
                 <DatePicker 
                     selected={checkOut} 
                     onChange={(date) => setCheckOut(date as Date)}
@@ -94,7 +94,7 @@ export default function SearchBar(){
                     minDate={minDate}
                     maxDate={maxDate}
                     placeholderText="Check-in Date"
-                    className="min-w-full rounded-md bg-orange-100 p-2 focus:outline-none"
+                    className="min-w-full rounded bg-orange-100 p-2 focus:outline-none"
                     dateFormat="dd/MM/yyyy"
                     wrapperClassName="min-w-full"
                 />
