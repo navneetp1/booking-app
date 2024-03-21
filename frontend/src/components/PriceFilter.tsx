@@ -15,7 +15,7 @@ export default function PriceFilter({ selectedPrice, onChange}: Props){
                     onChange={(event) => onChange(event.target.value ? parseInt(event.target.value) : undefined)}>
             <option value="">Select a Max Price</option>
             {[500, 1000, 2000, 4000, 6000, 8000].map((price) => (
-                <option value={price}>{price}</option> 
+                <option key={price} value={price}>{price}</option> 
             ))}
             </select>
         </div>

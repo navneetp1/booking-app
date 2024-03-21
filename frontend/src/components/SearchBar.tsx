@@ -28,6 +28,14 @@ export default function SearchBar(){
                 navigate("/search");
         };
 
+    function handleClear(){
+        setDestination("");
+        setCheckIn(search.checkIn);
+        setCheckOut(search.checkIn);
+        setChildCount(0);
+        setAdultCount(1);
+    }
+
     const minDate = new Date();
     const maxDate = new Date();
     maxDate.setFullYear(maxDate.getFullYear() + 1);  //1 year from now
@@ -93,7 +101,7 @@ export default function SearchBar(){
                     endDate={checkOut}
                     minDate={minDate}
                     maxDate={maxDate}
-                    placeholderText="Check-in Date"
+                    placeholderText="Check-out Date"
                     className="min-w-full rounded bg-orange-100 p-2 focus:outline-none"
                     dateFormat="dd/MM/yyyy"
                     wrapperClassName="min-w-full"
@@ -104,7 +112,7 @@ export default function SearchBar(){
                 <button className="search-icon ml-6 w-full max-w-min rounded-full bg-green-400 hover:bg-green-600 hover:text-white h-full p-2 font-bold">
                     <IoSearch size={40}/>
                 </button>
-                <button className="ml-2 w-full text-white text-xl rounded-xl bg-red-600 hover:bg-red-400 hover:text-black h-full p-3 font-bold">
+                <button onClick={handleClear} className="ml-2 w-full text-white text-xl rounded-xl bg-red-600 hover:bg-red-400 hover:text-black h-full p-3 font-bold">
                     Clear
                 </button>
             </div>

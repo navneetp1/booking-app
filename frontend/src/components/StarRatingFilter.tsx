@@ -8,7 +8,7 @@ export default function StarRatingFilter({ selectedStars, onChange }: Props) {
         <div className="border-b border-slate-400 pb-5">
             <h4 className="text-md font-semibold mb-2">Propery Rating</h4>
             {["5", "4", "3", "2", "1"].map((star) => (
-                <label className="flex items-center space-x-2">
+                <label key={star} className="flex items-center space-x-2">
                     <input 
                         type="checkbox" 
                         className="rounded" 

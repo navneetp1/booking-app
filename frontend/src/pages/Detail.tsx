@@ -31,7 +31,7 @@ export default function Detail(){
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {hotel.imageUrls.map((image) => (
-                    <div className="h-[300px]">
+                    <div key={image} className="h-[300px]">
                         <img 
                             src={image} 
                             alt={hotel.name} 
@@ -42,7 +42,7 @@ export default function Detail(){
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
                 {hotel.facilities.map((facility) => (
-                    <div className="border border-slate-400 rounded-md hover:border-black p-3 text-center">
+                    <div key={facility} className="border border-slate-400 rounded-md hover:border-black p-3 text-center">
                         {facility}
                     </div>
                 ))}

@@ -13,7 +13,7 @@ export default function FacilitiesFilter({ selectedFacilities, onChange}: Props)
         <div className="border-b border-slate-400 pb-5">
             <h3 className="text-md font-semibold mb-2">Facilities</h3>
             {hotelFacilities.map((facility) => (
-                <label className="flex items-center space-x-2">
+                <label key={facility} className="flex items-center space-x-2">
                     <input type="checkbox"
                            value={facility}
                            className="rounded"

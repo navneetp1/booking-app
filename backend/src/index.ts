@@ -6,6 +6,7 @@ import authRoutes from './routes/auth'
 import userRoutes from './routes/users';
 import myHotelRoutes from './routes/my-hotels';
 import hotelRoutes from "./routes/hotels";
+import bookingRoutes from "./routes/my-bookings"
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import { v2 as cloudinary} from "cloudinary";
@@ -43,6 +44,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
 app.use("/api/hotels", hotelRoutes)
+app.use("/api/my-bookings", bookingRoutes)
 
 //letting react handle the routing to access anything that doesnt involve above api routes
 //(might fix the access of my-hotel routes without logging in)
